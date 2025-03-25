@@ -123,7 +123,16 @@
         }
 
         async function checkDOB() {
-    const inputDOB = document.getElementById("dob").value;
+    let inputDOB = document.getElementById("dob").value.trim();
+
+    let parts = inputDOB.split("/");
+    if (parts.length === 3) {
+        let day = parts[0].padStart(2, "0");
+        let month = parts[1].padStart(2, "0");
+        let year = parts[2];
+        inputDOB = `${day}/${month}/${year}`;
+    }
+
     const correctHash = "34ab7d56484b120b9e525e47126f141d4ba54c8ce1cea394be52c6341ef6f70a";
 
     const inputHash = await hashDOB(inputDOB);
@@ -131,12 +140,10 @@
         document.querySelector(".auth-container").style.display = "none";
         document.querySelector(".container").style.display = "block";
 
-       
         let count = localStorage.getItem("accessCount") || 0;
         count = parseInt(count) + 1;
         localStorage.setItem("accessCount", count);
 
-      
         const visitCounter = document.createElement("p");
         // visitCounter.innerText = `Số lần truy cập: ${count}`;
         document.querySelector(".container").appendChild(visitCounter);
@@ -144,6 +151,7 @@
         document.getElementById("error-message").style.display = "block";
     }
 }
+
 
 
         document.addEventListener("DOMContentLoaded", function () {
