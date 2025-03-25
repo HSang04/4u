@@ -113,11 +113,21 @@
     </audio>
 
     <script>
-        const correctDOB = "24/03/2004"; 
+        async function hashDOB(dob) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(dob);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            return Array.from(new Uint8Array(hashBuffer))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        }
 
-        function checkDOB() {
+        async function checkDOB() {
             const inputDOB = document.getElementById("dob").value;
-            if (inputDOB === correctDOB) {
+            const correctHash = "34ab7d56484b120b9e525e47126f141d4ba54c8ce1cea394be52c6341ef6f70a"; // Mã hóa của "24/03/2004"
+
+            const inputHash = await hashDOB(inputDOB);
+            if (inputHash === correctHash) {
                 document.querySelector(".auth-container").style.display = "none";
                 document.querySelector(".container").style.display = "block";
             } else {
