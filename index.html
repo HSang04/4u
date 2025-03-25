@@ -84,7 +84,7 @@
         <h2>Nhập ngày sinh của tôi=)) </h2>
         <input type="text" id="dob" placeholder="DD/MM/YYYY">
         <button onclick="checkDOB()">Xác nhận</button>
-        <p id="error-message" style="color: red; display: none;">Ngày sinh không đúng, vui lòng thử lại.</p>
+        <p id="error-message" style="color: red; display: none;">Ngày sinh này của ai á, hong phải của tôi=)).</p>
     </div>
     
     <div class="container">
@@ -124,7 +124,7 @@
 
         async function checkDOB() {
             const inputDOB = document.getElementById("dob").value;
-            const correctHash = "34ab7d56484b120b9e525e47126f141d4ba54c8ce1cea394be52c6341ef6f70a"; // Mã hóa của "24/03/2004"
+            const correctHash = "34ab7d56484b120b9e525e47126f141d4ba54c8ce1cea394be52c6341ef6f70a"; 
 
             const inputHash = await hashDOB(inputDOB);
             if (inputHash === correctHash) {
