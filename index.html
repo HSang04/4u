@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lời nhắn đặc biệt dành cho người đặc biệt</title>
     <style>
-         body {
+        body {
             font-family: 'Arial', sans-serif;
             background: url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -89,23 +89,8 @@
     
     <div class="container">
         <button id="toggleMusic" class="music-btn">🔇</button>
-        <h2>💌 Gửi đến người đặc biệt </h2>
-        <p>
-            Anh không biết em có đọc được những dòng này không, nhưng dù thế nào, anh vẫn muốn gửi đến em tất cả những lời chúc tốt đẹp nhất trong năm mới này. Mong rằng 2025 sẽ mang lại cho em thật nhiều niềm vui, những cơ hội mới và những bước tiến lớn trên hành trình của riêng em. Dù cuộc sống có những thử thách, anh tin rằng em sẽ luôn giữ được sự kiên cường và lạc quan để vượt qua tất cả.
-
-        </p>
-        <p>
-            Có lẽ chúng ta không thể trò chuyện mỗi ngày, nhưng điều đó không làm thay đổi những suy nghĩ của anh dành cho em. Em là một người đặc biệt, và anh luôn mong muốn được nhìn thấy em hạnh phúc, thành công trong bất cứ điều gì em lựa chọn. Dù ở bất kỳ nơi đâu hay làm điều gì, hãy luôn nhớ rằng em không bao giờ cô đơn, và sẽ luôn có người ở đây ủng hộ em. Nếu một ngày nào đó cần đến anh thì hãy ngoảnh lại phía sau nhé, anh vẫn luôn ở đây.
-        </p>
-        <p>
-            Trong những tháng ngày phía trước, nếu em gặp khó khăn, hãy cứ mạnh dạn tiến lên. Thất bại hay thử thách chỉ là những bài học để em trở nên mạnh mẽ hơn mà thôi. Anh hy vọng rằng em sẽ luôn giữ được sự nhiệt huyết, sự kiên nhẫn và cả lòng tin vào bản thân. Vì em xứng đáng với những điều tốt đẹp nhất mà cuộc sống mang lại.
-        </p>
-        <p>
-            Với anh, chỉ cần biết em vẫn ổn, vẫn hạnh phúc, là đủ để anh an tâm. Nếu một ngày nào đó em đọc được những dòng này, anh mong em sẽ hiểu rằng em luôn được trân trọng và quý mến, dù thời gian hay khoảng cách có thay đổi ra sao. Em hãy luôn là chính mình, sống hết mình với những gì em yêu thương và đam mê.
-        </p>
-        <p>
-            Cuối cùng, anh chỉ muốn nói rằng năm mới này hãy thật vui vẻ, thật bình yên, và đừng quên mỉm cười 😊
-        </p>
+        <h2>💌 </h2>
+        <p>Hạnh phúc nhé !</p>
     </div>
 
     <audio id="backgroundMusic" loop>
@@ -123,36 +108,30 @@
         }
 
         async function checkDOB() {
-    let inputDOB = document.getElementById("dob").value.trim();
+            let inputDOB = document.getElementById("dob").value.trim();
 
-    let parts = inputDOB.split("/");
-    if (parts.length === 3) {
-        let day = parts[0].padStart(2, "0");
-        let month = parts[1].padStart(2, "0");
-        let year = parts[2];
-        inputDOB = `${day}/${month}/${year}`;
-    }
+            let parts = inputDOB.split("/");
+            if (parts.length === 3) {
+                let day = parts[0].padStart(2, "0");
+                let month = parts[1].padStart(2, "0");
+                let year = parts[2];
+                inputDOB = `${day}/${month}/${year}`;
+            }
 
-    const correctHash = "34ab7d56484b120b9e525e47126f141d4ba54c8ce1cea394be52c6341ef6f70a";
+            const correctHash = "34ab7d56484b120b9e525e47126f141d4ba54c8ce1cea394be52c6341ef6f70a";
 
-    const inputHash = await hashDOB(inputDOB);
-    if (inputHash === correctHash) {
-        document.querySelector(".auth-container").style.display = "none";
-        document.querySelector(".container").style.display = "block";
+            const inputHash = await hashDOB(inputDOB);
+            if (inputHash === correctHash) {
+                document.querySelector(".auth-container").style.display = "none";
+                document.querySelector(".container").style.display = "block";
 
-        let count = localStorage.getItem("accessCount") || 0;
-        count = parseInt(count) + 1;
-        localStorage.setItem("accessCount", count);
-
-        const visitCounter = document.createElement("p");
-        // visitCounter.innerText = `Số lần truy cập: ${count}`;
-        document.querySelector(".container").appendChild(visitCounter);
-    } else {
-        document.getElementById("error-message").style.display = "block";
-    }
-}
-
-
+                let count = localStorage.getItem("accessCount") || 0;
+                count = parseInt(count) + 1;
+                localStorage.setItem("accessCount", count);
+            } else {
+                document.getElementById("error-message").style.display = "block";
+            }
+        }
 
         document.addEventListener("DOMContentLoaded", function () {
             const music = document.getElementById("backgroundMusic");
@@ -182,20 +161,18 @@
         });
 
         document.addEventListener("keydown", function (event) {
-    if (event.key === "F12" || 
-        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || 
-        (event.ctrlKey && event.key === "U")) {
-        event.preventDefault();
-        alert(" DevTools đã bị vô hiệu hóa!");
-    }
-});
-document.addEventListener("contextmenu", function (event) {
-    event.preventDefault();
-    alert(" Chuột phải đã bị vô hiệu hóa!");
-});
-
+            if (event.key === "F12" || 
+                (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || 
+                (event.ctrlKey && event.key === "U")) {
+                event.preventDefault();
+                alert(" DevTools đã bị vô hiệu hóa!");
+            }
+        });
+        
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+            alert(" Chuột phải đã bị vô hiệu hóa!");
+        });
     </script>
-
-    
 </body>
 </html>
